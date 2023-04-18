@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>The Battery</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="prefetch" href="img/lightning.png">
+    <link rel="icon" type="image/png" href="img/lightningCropped.png">
+  </head>
+  <body>
+    <script src="chs.js"></script>
+    <script src="core.js"></script>
+    <div id="navbar">
+      <div class="tab" onclick="changeTab(1)">Battery</div>
+      <div class="tab" style="display: none" onclick="changeTab(2)">Upgrades</div>
+      <div class="tab" style="display: none" onclick="changeTab(3)">Star matter</div>
+      <div class="tab" onclick="changeTab(4)">Achievements</div>
+      <div class="tab" onclick="changeTab(5)">Options</div>
+    </div>
+    <div id="game">
+      <div class="content" style="display: none">
+        <h1>Options</h1>
+        <button onclick="save()">Manual save</button>
+        <button onclick="exportGame()">Export</button>
+        <button onclick="importGame()">Import</button>
+        <button style="background-color: #ffb0b0" onclick="hardReset()">Hard reset</button>
+      </div>
+      <div class="content" style="display: none; width: 453px">
+        <h1>Achievements</h1>
+        <div class="achievement" onmouseover="displayAchievement(1)">I</div>
+        <div class="achievement" onmouseover="displayAchievement(2)">II</div>
+        <div class="achievement" onmouseover="displayAchievement(3)">III</div>
+        <div class="achievement" onmouseover="displayAchievement(4)">IV</div>
+        <div class="achievement" onmouseover="displayAchievement(5)">V</div>
+        <div class="achievement" onmouseover="displayAchievement(6)">VI</div>
+        <div class="achievement" onmouseover="displayAchievement(7)">VII</div>
+        <div class="achievement" onmouseover="displayAchievement(8)">VIII</div>
+        <div class="achievement" onmouseover="displayAchievement(9)">IX</div>
+        <div class="achievement" onmouseover="displayAchievement(10)">X</div>
+        <div class="achievement" onmouseover="displayAchievement(11)">XI</div>
+        <div class="achievement" onmouseover="displayAchievement(12)">XII</div>
+        <div class="achievement" onmouseover="displayAchievement(13)">XIII</div>
+        <div class="achievement" onmouseover="displayAchievement(14)">XIV</div>
+      </div>
+      <div id="achievementInfo">
+        <h1><span id="achievementName">Uncharged</span> (<span id="achievementNumber">I</span>)</h1>
+        <p style="text-align: center; font-size: 18px">Reach <span id="achievementRequirement">10</span> charge</p>
+      </div>
+      <div class="content" style="width: 300px;">
+        <p style="margin: 4px; margin-bottom: 20px; text-align: center; font-size: 22px;">Charge rate: <span id="chargeRate">1.0</span>/s</p>
+        <button style="width: 300px" onclick="buyCharger()">Charger (<span id="chargersBought">0</span>) <span id="chargersMaxed"></span><br>Costs <span id="chargerCost">10</span> charge</button>
+        <button id="buyMaxChargersButton" onclick="buyMaxChargers()">Buy max</button>
+        <button style="width: 300px" onclick="buyBooster()">Booster (<span id="boostersBought">0</span>)<br>Increases max charge and charge rate<br>Costs <span id="boosterCost">12</span> chargers</button>
+        <button style="width: 300px; display: none;" id="buyModifierButton" onclick="buyModifier()">Modifier (<span id="modifiersBought">0</span>)<br>Increases booster power, keeps 1 booster<br>Costs <span id="modifierCost">800</span> charge</button>
+        <button style="width: 300px; display: none; background-image: linear-gradient(to right, #ffd0b0, #b0d0ff)" id="buyAmplifierButton" onclick="buyAmplifier()">Amplifier (<span id="amplifiersBought">0</span>) <span id="amplifiersMaxed"></span><br>Increases cosmic matter gain<br>Costs <span id="amplifierCost">1.000e40</span> charge</button>
+        <button id="unlockUpgradesButton" onclick="unlockUpgrades()">Unlock upgrades<br>Costs 200,000 charge</button>
+        <button id="unlockCosmicUpgradesButton" onclick="unlockCosmicUpgrades()">Unlock cosmic upgrades<br>Costs 1.000e115 charge</button>
+        <button id="unlockStarMatterButton" onclick="unlockStarMatter()">Unlock star matter<br>Costs 1e2,500 charge</button>
+        <button id="unlockSMBoostersButton" onclick="unlockSMBoosters()">Unlock star matter boosters<br>Costs 1e1.000e19 charge</button>
+      </div>
+      <div class="content">
+        <div id="batteryContainer">
+          <div id="battery">
+            <div id="batteryInner"></div>
+          </div>
+          <div id="batteryEnd"></div>
+          <p id="batteryText">Charge: 0/100</p>
+        </div>
+      </div>
+      <div class="content" style="position: relative; display: none;">
+        <p style="color: #404040">Time played: <span id="timePlayed">0:00:00</span></p>
+        <p id="versionText">The Battery v0.5</p>
+      </div>
+      <div class="content" style="display: none; width: 400px;">
+        <h1>Upgrades</h1>
+        <button class="upgrade" onclick="buyUpgrade(1)"><b>Charger cost scaling is lower</b><br>Costs 45 chargers</button>
+        <button class="upgrade" onclick="buyUpgrade(2)"><b>Booster amount multiplies charge rate</b><br>Costs 75 chargers</button>
+        <button class="upgrade" onclick="buyUpgrade(3)"><b>Unlock buy max for chargers</b><br>Costs 95 chargers</button>
+        <button class="upgrade" onclick="buyUpgrade(4)"><b>Modifiers are much more powerful</b><br>Costs 130 chargers</button>
+        <button class="upgrade" onclick="buyUpgrade(5)"><b>Charge rate is exponentiated by 1.2</b><br>Costs 250 chargers</button>
+        <button class="upgrade" onclick="buyUpgrade(6)"><b>Charger cost scaling is lower again</b><br>Costs 340 chargers</button>
+        <button class="upgrade" onclick="buyUpgrade(7)"><b>Charge boosts charge rate</b><br>Costs 450 chargers</button>
+        <button class="upgrade" onclick="buyUpgrade(8)"><b>Unlock <span style="color: #3b118a">cosmic matter</span></b><br>Costs 500 chargers</button>
+      </div>
+      <div class="content" style="display: none; width: 500px; position: relative;">
+        <p style="margin: 4px; margin-bottom: 40px; text-align: center; font-size: 22px; color: #3b118a;"><b>You have <span id="cosmicMatter">0</span> cosmic matter</b></p>
+        <div class="cosmicColumn" style="bottom: 10px; left: 10px;">
+          <center>
+            <button onclick="assignFire(1)">Assign 100%</button>
+            <button onclick="assignFire(2)">Assign 50%</button>
+            <button onclick="assignFire(3)">Assign 10%</button>
+            <button onclick="assignFire(4)">Assign 1</button>
+            <p style="color: #b03000; font-size: 22px;">Fire essence: <span id="fireEssence">0</span></p>
+            <p>You have <span id="fire">0</span> <span style="color: #b03000">fire</span> (<span id="firePerSecond">0</span>/s), multiplying your charge rate</p>
+          </center>
+        </div>
+        <div class="cosmicColumn" style="bottom: 10px; left: 264px;">
+          <center>
+            <button onclick="assignWater(1)">Assign 100%</button>
+            <button onclick="assignWater(2)">Assign 50%</button>
+            <button onclick="assignWater(3)">Assign 10%</button>
+            <button onclick="assignWater(4)">Assign 1</button>
+            <p style="color: #0060b0; font-size: 22px;">Water essence: <span id="waterEssence">0</span></p>
+            <p>You have <span id="water">0</span> <span style="color: #0060b0">water</span> (<span id="waterPerSecond">0</span>/s), multiplying your max charge</p>
+          </center>
+        </div>
+      </div>
+      <div class="content" style="display: none; width: 400px; color: #3b118a;">
+        <h1>Cosmic upgrades</h1>
+        <button class="cosmicUpgrade" onclick="buyCosmicUpgrade(1)"><b>Water gain is slightly higher</b><br>Costs 12 amplifiers</button>
+        <button class="cosmicUpgrade" onclick="buyCosmicUpgrade(2)"><b>Amplifiers are more powerful (1/3)</b><br>Costs 20 amplifiers</button>
+        <button class="cosmicUpgrade" onclick="buyCosmicUpgrade(3)"><b>Each bought amplifier gives a free modifier</b><br>Requires 26 amplifiers</button>
+        <button class="cosmicUpgrade" onclick="buyCosmicUpgrade(4)"><b>Amplifiers are more powerful (2/3)</b><br>Costs 42 amplifiers</button>
+        <button class="cosmicUpgrade" onclick="buyCosmicUpgrade(5)"><b>Cosmic matter boosts fire/water gain</b><br>Costs 54 amplifiers</button>
+        <button class="cosmicUpgrade" onclick="buyCosmicUpgrade(6)"><b>Amplifiers are more powerful (3/3)</b><br>Costs 68 amplifiers</button>
+        <button class="cosmicUpgrade" style="display: none;" onclick="buyCosmicUpgrade(7)"><b>Fire boosts cosmic matter</b><br>Costs 1.000e22 star matter</button>
+        <button class="cosmicUpgrade" style="display: none;" onclick="buyCosmicUpgrade(8)"><b>Water boosts cosmic matter</b><br>Costs 1.000e24 star matter</button>
+      </div>
+      <div class="content" style="display: none; width: 500px;">
+        <h1 style="color: #3b118a; text-shadow: 2px 2px white">Star matter</h1>
+        <center>
+          <p style="color: #3b118a">You have <span id="starMatter" style="font-size: 18px">0</span> star matter,<br>produced by your cosmic matter</p>
+          <button class="starMatterButton" onclick="buySM1()">Increase cosmic matter gain<br>Currently <span id="sm1Effect">1</span>x<br>Costs <span id="sm1Cost">10,000</span> star matter</button>
+          <button class="starMatterButton" onclick="buySM2()">Increase star matter gain<br>Currently <span id="sm2Effect">1</span>x<br>Costs <span id="sm2Cost">50,000</span> star matter</button>
+          <button class="starMatterButton" onclick="buySM3()">Increase amplifier power<br>Currently <span id="sm3Effect">1</span>x<br>Costs <span id="sm3Cost">1.000e13</span> star matter</button>
+          <button class="starMatterButton" onclick="buySM4()">Increase star matter gain again<br>Currently <span id="sm4Effect">1</span>x<br>Costs <span id="sm4Cost">2.000e14</span> star matter</button><br><br><br>
+          <button class="starMatterBooster" onclick="buySB1()">Increase cosmic matter gain (<span id="sb1Bought">0</span>/9)<br>Requires <span id="sb1Cost">1.000e39</span> star matter</button>
+          <button class="starMatterBooster" onclick="buySB2()">Increase fire/water gain (<span id="sb2Bought">0</span>/5)<br>Requires <span id="sb2Cost">1.000e100</span> star matter</button>
+          <button class="starMatterBooster" onclick="buySB3()">Increase star matter gain (<span id="sb3Bought">0</span>/3)<br>Requires <span id="sb3Cost">1.000e100</span> star matter</button>
+        </center>
+      </div>
+    </div>
+    <script src="OmegaNum.js"></script>
+    <script src="format-omeganum.js"></script>
+    <script src="constants.js"></script>
+    <script src="script.js"></script>
+<!--客服 开始-->
+<script src="//g8hh.com/static/js/jquery.min.js"></script>
+<link rel="stylesheet" href="//g8hh.com/static/css/kf.css" type="text/css" media="screen" charset="utf-8">
+<script src="//g8hh.com/static/js/kf.js"></script>
+<!-- 客服 结束 -->
+<!--站长统计-->
+<div style="display: none">
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?dbb7ff142f4d4b68546c93b9cd6e9328";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+        </div>
+  </body>
+</html>

@@ -1,0 +1,204 @@
+body {
+  background-color: #b0b0b0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  border: 3px solid #404040;
+  background-color: #d0d0d0;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#navbar {
+  position: absolute;
+  top: 10vh;
+  left: 10vh;
+  width: calc(100vw - 20vh);
+  height: 40px;
+  background-color: #909090;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.tab {
+  height: 30px;
+  margin: 0;
+  margin-top: 5px;
+  line-height: 30px;
+  font-size: 18px;
+  text-align: center;
+  color: #606060;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-left: 2px solid #707070;
+  border-right: 2px solid #707070;
+  user-select: none;
+}
+
+.tab:hover {
+  cursor: pointer;
+}
+
+#game {
+  position: absolute;
+  top: calc(10vh + 55px);
+  left: 10vh;
+  width: calc(100vw - 20vh);
+  background-color: #909090;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.content {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 500px;
+  min-width: 200px;
+  background-color: #707070;
+  padding: 10px;
+}
+
+#buyModifierButton {
+  display: none;
+}
+
+#unlockUpgradesButton {
+  display: none;
+  background-color: #b0c0e0;
+}
+
+#unlockCosmicUpgradesButton {
+  display: none;
+  background-color: #c0b0e0;
+}
+
+#unlockStarMatterButton {
+  display: none;
+  background-image: linear-gradient(135deg, white, #5629aa, white);
+}
+
+#unlockSMBoostersButton {
+  display: none;
+  background-image: linear-gradient(135deg, white, #2976aa, white);
+}
+
+#batteryContainer {
+  height: 140px;
+  width: 235px;
+  padding: 0;
+  position: relative;
+}
+
+#battery {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 80px;
+  border: 10px solid black;
+  margin: 0;
+}
+
+#batteryInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: red;
+}
+
+#batteryEnd {
+  position: absolute;
+  top: 30px;
+  left: 220px;
+  width: 15px;
+  height: 40px;
+  background-color: black;
+  margin: 0;
+}
+
+#batteryText {
+  position: absolute;
+  top: 110px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+#versionText {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  margin: 0;
+  font-size: 11px;
+  color: #404040;
+}
+
+#buyMaxChargersButton {
+  display: none;
+}
+
+.upgrade {
+  width: 400px;
+}
+
+.cosmicColumn {
+  width: 247px;
+  height: 450px;
+  position: absolute;
+}
+
+.cosmicUpgrade {
+  width: 400px;
+  background-color: #d0b0ff;
+  border: 3px solid #403050;
+}
+
+.starMatterButton {
+  background-image: linear-gradient(135deg, white, #8b61d8, white);
+  border: 3px solid #403050;
+}
+
+.starMatterBooster {
+  background-image: linear-gradient(135deg, white, #2976aa, white);
+  border: 3px solid #303f50;
+  display: none;
+}
+
+.achievement {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  background-image: url('img/lightning.png');
+  background-size: 80px 80px;
+  border: 3px solid black;
+  color: white;
+  -webkit-text-stroke: 1px black;
+  text-align: center;
+  line-height: 80px;
+  font-size: 32px;
+  margin-bottom: 6px;
+}
+
+#achievementInfo {
+  background-color: #707070;
+  margin-top: 10px;
+  height: 110px;
+  width: 400px;
+  padding: 10px;
+  display: none;
+}
