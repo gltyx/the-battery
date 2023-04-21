@@ -98,7 +98,7 @@ var cnItems = {
     "Charger cost scaling is lower": "充电器成本比例降低",
     "Charger (": "充电器 (",
     "Charge boosts charge rate": "充电提升充电率",
-    "": "",
+    "Charged": "已充电",
     "": "",
     "": "",
     "": "",
